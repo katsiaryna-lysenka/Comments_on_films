@@ -1,0 +1,4 @@
+Flask~=3.0.0
+tensorflow~=2.16.0
+Tokenizer~=3.4.3
+keras
