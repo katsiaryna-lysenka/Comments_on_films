@@ -17,10 +17,11 @@ class TestSentimentAnalysisApp(unittest.TestCase):
         self.assertIn(b'Sentiment Analysis App', response.data)
 
     def test_predict_endpoint(self):
-        response = self.app.post('/predict', data={'review': 'Great movie!'})
+        response = self.app.post('/predict', data={'review': 'Bad movie!'})
         self.assertEqual(response.status_code, 200)
-        # Проверьте, что в ответе есть текст "The sentiment is Positive"
-        self.assertIn(b'The sentiment is Positive', response.data)
+
+        # Проверьте, что в ответе есть текст "The sentiment is Negative"
+        self.assertIn(b'The sentiment is Negative', response.data)
 
     def test_new_comment_redirect(self):
         response = self.app.get('/new_comment')

@@ -12,7 +12,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, script_dir)
 
 # Load model and tokenizer
-model = load_model('/home/user/app/my_model_updated_lr.keras')
+model = load_model('/home/katsiaryna/PycharmProjects/app/my_model_updated_lr.keras')
 tokenizer = Tokenizer()
 
 @flask_app.route('/')
@@ -35,6 +35,7 @@ def new_comment():
 
 if __name__ == '__main__':
     flask_app.run(debug=True)
+
 
 
 
