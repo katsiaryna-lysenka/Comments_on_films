@@ -1,11 +1,10 @@
 import unittest
-from flask import Flask
-from flask_app import flask_app  # Изменено: используйте имя объекта Flask-приложения, а не 'app'
+from flask_app import flask_app
+
 
 class TestSentimentAnalysisApp(unittest.TestCase):
 
     def setUp(self):
-        # Создайте тестовый клиент для приложения
         self.app = flask_app.test_client()
         self.app.testing = True
 
@@ -19,15 +18,13 @@ class TestSentimentAnalysisApp(unittest.TestCase):
     def test_predict_endpoint(self):
         response = self.app.post('/predict', data={'review': 'Bad movie!'})
         self.assertEqual(response.status_code, 200)
-
-        # Проверьте, что в ответе есть текст "The sentiment is Negative"
         self.assertIn(b'The sentiment is Negative', response.data)
 
     def test_new_comment_redirect(self):
         response = self.app.get('/new_comment')
         self.assertEqual(response.status_code, 302)
-        # Проверьте, что редирект ведет на ожидаемый URL
         self.assertTrue(response.location.endswith('http://127.0.0.1:5000/'))
+
 
 if __name__ == '__main__':
     unittest.main()

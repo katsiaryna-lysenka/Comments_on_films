@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 class TestSentimentAnalysisAppE2E(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome()  # Убедитесь, что у вас установлен и доступен драйвер Chrome
+        self.driver = webdriver.Chrome()
         self.driver.get('http://127.0.0.1:5000/')
         self.driver.implicitly_wait(3)
 
@@ -36,10 +36,7 @@ class TestSentimentAnalysisAppE2E(unittest.TestCase):
 
             except NoSuchElementException as e:
                 print(f"Element with link text 'New comment' not found: {e}")
-                # Add additional debugging information if needed
-                # You might want to print the page source: print(self.driver.page_source)
-                # Or take a screenshot for visual inspection: self.driver.save_screenshot('error_screenshot.png')
-                raise  # Re-raise the exception to mark the test as failed
+                raise
 
     def tearDown(self):
         self.driver.quit()
