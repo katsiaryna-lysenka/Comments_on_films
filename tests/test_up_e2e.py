@@ -19,11 +19,11 @@ class TestSentimentAnalysisAppE2E(unittest.TestCase):
 
     def test_predict_endpoint(self):
         review_input = self.driver.find_element("name", "review")
-        review_input.send_keys('Great movie!')
+        review_input.send_keys('Bad movie!')
         predict_button = self.driver.find_element("css selector", 'input[type="submit"]')
         predict_button.click()
         result_text = self.driver.find_element("tag name", "h2").text
-        self.assertIn('The sentiment is Positive', result_text)
+        self.assertIn('The sentiment is Negative', result_text)
 
     def test_new_comment_redirect(self):
         def test_new_comment_redirect(self):
